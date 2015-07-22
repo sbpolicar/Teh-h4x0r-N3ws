@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   root 'posts#index'
 
-  get 'signup' => 'users#new'
-  post 'signup' => 'users#create'
+  get 'signup' => 'users#new', as: :new_user
+  post 'signup' => 'users#create', as: :users
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'

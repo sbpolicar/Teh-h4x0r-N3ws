@@ -9,10 +9,6 @@ class User < ActiveRecord::Base
   uniqueness: {case_sensitive: false},
   format: {with: /@/}
 
-  validates :password,
-  presence: true,
-  on: [:create]
-
   has_many :posts
 
   def self.authenticate email, password
