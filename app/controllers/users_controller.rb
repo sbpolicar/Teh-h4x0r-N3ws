@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :check_no_auth
+
   def new
     @user = User.new
   end
