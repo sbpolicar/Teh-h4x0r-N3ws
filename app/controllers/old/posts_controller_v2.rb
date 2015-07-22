@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
 
   before_action :check_auth, except: [:index]
-  before_action :load_model, only:[:edit,:update,:destroy]
   before_action :check_ownership, only: [:edit,:update,:destroy]
 
   def index
@@ -29,9 +28,13 @@ class PostsController < ApplicationController
   end
 
   def edit
+    #duplicate query in check_ownership
+    @post = Post.find params[:id]
   end
 
   def update
+    #duplicate query in check_ownership
+    @post = Post.find params[:id]
     @post.update post_params
     if @post.save
       flash[:success] = "Your link has been updated."
@@ -44,11 +47,27 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.delete
+    #duplicate query in check_ownership
+    post = Post.find params[:id]
+    post.delete
     redirect_to root_path
   end
 
   private
+
+  #could be moved to appliation controller
+  #used for all controllers
+  def check_ownership
+    return unless params[:id]
+    #duplicate query in actions
+    post = Post.find params[:id]
+    owner = post.user
+    if owner.nil? || owner.id != current_user.id
+      flash[:danger] = "You cannot change that which does not belong to you."
+      redirect_to root_path
+    end
+  end
+
 
   def post_params
     params.require(:post).permit(:title,:link)

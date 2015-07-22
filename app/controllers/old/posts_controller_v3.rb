@@ -50,6 +50,11 @@ class PostsController < ApplicationController
 
   private
 
+  def load_model
+    return unless params[:id]
+    @post = Post.find params[:id]
+  end
+
   def post_params
     params.require(:post).permit(:title,:link)
   end
