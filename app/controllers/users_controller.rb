@@ -7,13 +7,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    new_user = User.create user_params
-    if new_user.persisted?
+    @user = User.create user_params
+    if @user.persisted?
       flash[:success] = "You are signed up. Login below."
       redirect_to login_path
     else
-      flash[:danger] = new_user.errors.full_messages.uniq.to_sentence
-      redirect_to users_path
+      flash[:danger] = @user.errors.full_messages.uniq.to_sentence
+      render :new
     end
   end
 
