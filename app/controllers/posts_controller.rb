@@ -21,9 +21,54 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+    @post = Post.find params[:id]
+
+    #check ownership
+    unless @post.owned_by? current_user
+      flash[:danger] = "You do not own that post"
+      redirect_to root_path
+    end
+  end
+
+  def update
+    @post = Post.find params[:id]
+
+    #check ownership
+    unless @post.owned_by? current_user
+      flash[:danger] = "You do not own that post"
+      redirect_to root_path
+      return
+    else
+      #update post if we own it
+      @post.update post_params
+      if @post.save
+        flash[:success] = "Your link has been updated."
+        redirect_to root_path
+      else
+        flash[:danger] = @post.errors.full_messages.uniq.to_sentence
+        render :edit
+      end
+    end
+  end
+
+  def destroy
+    post = Post.find params[:id]
+
+    #check ownership
+    unless post.owned_by? current_user
+      flash[:danger] = "You do not own that post"
+    else
+      post.delete
+    end
+
+    redirect_to root_path
+  end
+
   private
 
   def post_params
     params.require(:post).permit(:title,:link)
   end
+
 end

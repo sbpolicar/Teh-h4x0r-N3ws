@@ -13,6 +13,13 @@
           <td><%= post.user.display_name %></td>
           <td><%= format_creation_time post %></td>
           <td>0 Comments</td>
+          <td>
+          <!--% if @current_user && @current_user.id == post.user.id %-->
+          <% if post.owned_by? @current_user %>
+            <%= link_to "", edit_post_path(post), class: 'glyphicon glyphicon-pencil' %>
+            <%= link_to "", post, method:'delete', class: 'glyphicon glyphicon-trash' %>
+          <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
