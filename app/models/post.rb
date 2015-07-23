@@ -11,6 +11,10 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
 
+  has_many :ratings, class_name: 'Vote'
+  has_many :votes, as: :voatable
+
+
   def owned_by? user
     user && user.id == self.user.id
   end

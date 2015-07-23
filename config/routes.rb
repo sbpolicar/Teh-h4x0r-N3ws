@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy'
 
   # resources :posts, only:[:index,:new,:create]
-  resources :posts
+  resources :posts do
+    resources :votes, :only =>[:create]
+  end
+  resources :users, :only => [:show] do
+    resources :votes, :only =>[:create]
+  end
 
 end

@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
 
   has_many :posts
 
+  has_many :ratings, class_name: 'Vote'
+
+  has_many :votes, as: :voatable
+
   def display_name
     self.name || 'Anon'
   end

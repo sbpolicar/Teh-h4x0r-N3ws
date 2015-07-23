@@ -15,9 +15,13 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    render layout: false
+
   end
 
   def create
+    # render layout: false
+
     @post = current_user.posts.create post_params
     if @post.persisted?
       flash[:success] = "Your link has been posted."
@@ -29,6 +33,8 @@ class PostsController < ApplicationController
   end
 
   def edit
+# @task = Task.find(params[:id])
+    render layout: false
   end
 
   def update

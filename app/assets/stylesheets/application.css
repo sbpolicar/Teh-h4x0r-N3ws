@@ -13,3 +13,89 @@
  *= require_tree .
  *= require_self
  */
+
+
+
+body{
+background-color: #B30B00;
+font-family: tahoma;
+-webkit-touch-callout: none;
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+
+.nav-margin{
+  margin-top: 70px;
+  background-color: #DE7920;
+}
+
+.red{
+background-color: #B30B00;
+
+}
+
+.orange{
+  background-color: #DE7920;
+
+}
+
+.white{
+  background-color: white;
+}
+
+.text-white{
+  color:white!important;
+}
+
+.text-white-stay{
+  color:white!important;
+}
+
+.text-white:hover{
+
+  color:#DE7920!important;
+}
+.coke-zero{
+  background-color: transparent !important;
+  background-image: url("http://www.smokenribs.com.au/wp-content/uploads/Coke_Zero_Can.png");
+  background-size: 220%, 230%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.table-change{
+  background-color: silver;
+  box-shadow: inset 0 0 100px rgba(0,0,0,0.4) !important;
+}
+
+.font-mini{
+  font-size:.5em;
+  word-spacing: .1px !important;
+}
+
+.shadow{
+  box-shadow: 0 0 100px rgba(0,0,0,0.3);
+}
+
+.borderline{
+  border-left: white groove 8px;
+  border-right: white groove 8px;
+
+}
+
+.nav-bottom{
+  border-bottom: white groove 8px !important;
+
+}
+
+.button-spacer{
+  margin: 20px;
+}
+
+.font-mega{
+  font-size: 25pt !important;
+}
+

@@ -1,10 +1,25 @@
-<div class="col-sm-offset-4 col-sm-4">
+<!-- <div class="col-sm-offset-4 col-sm-4">
   <div class="panel panel-primary">
     <div class="panel-heading">
       <h3 class="panel-title">Create a post</h3>
     </div>
     <div class="panel-body">
-      <%= render partial: 'form' %>
+      <%#= render partial: 'form' %>
     </div>
   </div>
-</div>
+</div> -->
+
+<%= bootstrap_form_for @post do |p| %>
+<div class="orange modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="text-white modal-title" id="myModalLabel1">New Post</h4>
+      </div>
+      <div class="white modal-body">
+  <%= p.text_field :title, placeholder: 'My interesting title' %>
+  <%= p.text_field :link, placeholder: 'http://www.example.com' %>
+  </div>
+      <div class="orange modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+  <%= p.primary "Post" %>
+  </div>
+<% end %>
