@@ -1,16 +1,16 @@
-<div class="col-sm-8 nav-margin table-responsive">
+<div class="col-sm-8 transparent nav-margin table-responsive">
   <table class="table table-striped table-change">
     <tbody>
       <% @posts.each do |post| %>
         <tr>
-          <td>
+          <td class="table-glow ">
           <%= bootstrap_form_for [post, Vote.new] do |f| %>
           <%= f.button "", value: 'up', class: 'btn btn-primary btn-xs glyphicon glyphicon-chevron-up' %>
           <%= f.button "", value: 'down', class: 'btn btn-primary btn-xs glyphicon glyphicon-chevron-down' %>
           <% end %>
           </td>
 
-          <td class="btn-info disabled btn-lg"><%= post.votes.reduce(0){ |sum,v| sum + v.value} %></td>
+          <td class="btn btn-default active disabled"><%= post.votes.reduce(0){ |sum,v| sum + v.value} %></td>
 
 
           <td>

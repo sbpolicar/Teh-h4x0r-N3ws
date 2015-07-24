@@ -99,3 +99,12 @@ background-color: #B30B00;
   font-size: 25pt !important;
 }
 
+.transparent{
+  background: transparent;
+}
+
+
+
+.dis-btn{
+  position: absolute !important;
+}
